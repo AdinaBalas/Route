@@ -4,7 +4,6 @@ import com.example.route.AbstractTest;
 import com.example.route.exception.ServiceException;
 import com.example.route.model.Country;
 import org.mockito.Mock;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -24,8 +23,7 @@ public class RoutingServiceTest extends AbstractTest {
 
     @BeforeMethod
     public void setUp() {
-        routingService = new RoutingServiceImpl();
-        ReflectionTestUtils.setField(routingService, "countryService", countryService);
+        routingService = new RoutingServiceImpl(countryService);
     }
 
     @Test(expectedExceptions = ServiceException.class, expectedExceptionsMessageRegExp = "Countries list is empty")

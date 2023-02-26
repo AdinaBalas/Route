@@ -6,7 +6,6 @@ import com.example.route.service.RoutingService;
 import org.mockito.Mock;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -26,8 +25,7 @@ public class RoutingControllerTest extends AbstractTest {
 
     @BeforeMethod
     public void setUp() {
-        routingController = new RoutingController();
-        ReflectionTestUtils.setField(routingController, "routingService", routingService);
+        routingController = new RoutingController(routingService);
     }
 
     @Test

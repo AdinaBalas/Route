@@ -15,8 +15,12 @@ import java.util.List;
 @RequestMapping("/routing")
 public class RoutingController {
 
+    private final RoutingService routingService;
+
     @Autowired
-    private RoutingService routingService;
+    public RoutingController(RoutingService routingService) {
+        this.routingService = routingService;
+    }
 
     @GetMapping(value = "/{origin}/{destination}", produces = "application/json")
     public ResponseEntity<List<String>> getBorderCrossings(@PathVariable(value = "origin") String origin,

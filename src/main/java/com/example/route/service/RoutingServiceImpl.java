@@ -13,8 +13,12 @@ import java.util.stream.Collectors;
 @Service
 public class RoutingServiceImpl implements RoutingService {
 
+    private final CountryService countryService;
+
     @Autowired
-    private CountryService countryService;
+    public RoutingServiceImpl(CountryService countryService) {
+        this.countryService = countryService;
+    }
 
     @Override
     public List<String> getBorderCrossings(String origin, String destination) throws ServiceException {
