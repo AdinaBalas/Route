@@ -3,9 +3,10 @@ package com.example.route.controller;
 import com.example.route.AbstractTest;
 import jakarta.servlet.http.HttpServletRequest;
 import org.mockito.Mock;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 public class CustomErrorControllerTest extends AbstractTest {
 
@@ -25,6 +26,6 @@ public class CustomErrorControllerTest extends AbstractTest {
         String result = customErrorController.error(httpServletRequest);
 
         // Verify
-        Assert.assertEquals(result, "<h1>Something went wrong!</h2>");
+        assertEquals(result, "<h1>Something went wrong!</h2>");
     }
 }

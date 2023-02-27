@@ -6,7 +6,6 @@ import com.example.route.service.RoutingService;
 import org.mockito.Mock;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -15,6 +14,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
+import static org.testng.Assert.assertEquals;
 
 public class RoutingControllerTest extends AbstractTest {
 
@@ -38,8 +38,8 @@ public class RoutingControllerTest extends AbstractTest {
         ResponseEntity<List<String>> borderCrossings = routingController.getBorderCrossings("A", "B");
 
         // Verify
-        Assert.assertEquals(borderCrossings.getStatusCode(), HttpStatus.OK);
-        Assert.assertEquals(borderCrossings.getBody(), expectedBorderCrossings);
+        assertEquals(borderCrossings.getStatusCode(), HttpStatus.OK);
+        assertEquals(borderCrossings.getBody(), expectedBorderCrossings);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class RoutingControllerTest extends AbstractTest {
         ResponseEntity<List<String>> borderCrossings = routingController.getBorderCrossings("", "");
 
         // Verify
-        Assert.assertEquals(borderCrossings.getStatusCode(), HttpStatus.BAD_REQUEST);
-        Assert.assertEquals(borderCrossings.getBody(), Collections.singletonList("Country cannot be blank"));
+        assertEquals(borderCrossings.getStatusCode(), HttpStatus.BAD_REQUEST);
+        assertEquals(borderCrossings.getBody(), Collections.singletonList("Country cannot be blank"));
     }
 }

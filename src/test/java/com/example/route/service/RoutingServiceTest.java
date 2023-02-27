@@ -4,7 +4,6 @@ import com.example.route.AbstractTest;
 import com.example.route.exception.ServiceException;
 import com.example.route.model.Country;
 import org.mockito.Mock;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -13,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.doReturn;
+import static org.testng.Assert.assertEquals;
 
 public class RoutingServiceTest extends AbstractTest {
 
@@ -154,7 +154,7 @@ public class RoutingServiceTest extends AbstractTest {
         List<String> borderCrossings = routingService.getBorderCrossings("A", "A");
 
         // Verify
-        Assert.assertEquals(borderCrossings, Collections.singletonList("A"));
+        assertEquals(borderCrossings, Collections.singletonList("A"));
     }
 
 
@@ -204,7 +204,7 @@ public class RoutingServiceTest extends AbstractTest {
         List<String> borderCrossings = routingService.getBorderCrossings("A", "C");
 
         // Verify
-        Assert.assertEquals(borderCrossings, List.of("A", "B", "C"));
+        assertEquals(borderCrossings, List.of("A", "B", "C"));
     }
 
     @Test(expectedExceptions = ServiceException.class, expectedExceptionsMessageRegExp = "Exception getting border crossings")
